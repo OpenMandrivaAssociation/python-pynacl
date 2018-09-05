@@ -28,6 +28,7 @@ BuildRequires:  python3dist(cffi) >= 1.4.1
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(six)
 BuildRequires:  python3dist(funcsigs)
+BuildRequires:  pkgconfig(libsodium)
 
 %description
 PyNaCl is a Python binding to libsodium, which is a fork of the Networking
@@ -56,6 +57,7 @@ and Cryptography library.
 rm -rf %{pypi_name}.egg-info
 
 %build
+export SODIUM_INSTALL=system
 %py2_build
 %py3_build
 
