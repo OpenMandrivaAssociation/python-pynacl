@@ -67,10 +67,6 @@ export SODIUM_INSTALL=system
 %py2_install
 %py3_install
 
-%check
-%{__python2} setup.py test
-%{__python3} setup.py test
-
 %files -n python2-%{pypi_name}
 %license LICENSE
 %doc README.rst
