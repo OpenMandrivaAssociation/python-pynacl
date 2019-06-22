@@ -1,7 +1,7 @@
 # Created by pyp2rpm-3.3.1
 %global pypi_name pynacl
 
-Name:           %{pypi_name}
+Name:           python-%{pypi_name}
 Version:	1.3.0
 Release:        2
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
@@ -39,14 +39,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 %description -n python2-%{pypi_name}
-PyNaCl is a Python binding to libsodium, which is a fork of the Networking
-and Cryptography library.
-
-%package -n     python-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-
-%description -n python-%{pypi_name}
 PyNaCl is a Python binding to libsodium, which is a fork of the Networking
 and Cryptography library.
 
