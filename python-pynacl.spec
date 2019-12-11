@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:	1.3.0
-Release:        2
+Release:        3
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 Group:          Development/Python
 License:        ASL 2.0
