@@ -39,4 +39,4 @@ export SODIUM_INSTALL=system
 %license LICENSE
 %doc README.rst
 %{python3_sitearch}/nacl/
-%{python3_sitearch}/PyNaCl-%{version}-py?.?.egg-info/
+%{python3_sitearch}/PyNaCl-%{version}-py*.*.egg-info/
