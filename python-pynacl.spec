@@ -1,42 +1,44 @@
-# Created by pyp2rpm-3.3.1
-%global pypi_name pynacl
+%define module pynacl
+%define oname PyNaCl
 
-Name:           python-%{pypi_name}
-Version:	1.5.0
-Release:	4
-Summary:        Python binding to the Networking and Cryptography (NaCl) library
-Group:          Development/Python
-License:        ASL 2.0
-URL:            https://github.com/pyca/pynacl/
-Source0:	https://files.pythonhosted.org/packages/a7/22/27582568be639dfe22ddb3902225f91f2f17ceff88ce80e4db396c8986da/PyNaCl-1.5.0.tar.gz
+Name:		python-pynacl
+Version:	1.6.1
+Release:	1
+Summary:	Python binding to the Networking and Cryptography (NaCl) library
+Group:		Development/Python
+License:	ASL 2.0
+URL:		https://github.com/pyca/pynacl/
+Source0:	https://github.com/pyca/pynacl/archive/%{version}/%{module}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  python3-devel
-BuildRequires:  python3dist(cffi) >= 1.4.1
-BuildRequires:  python3dist(setuptools)
-BuildRequires:  python3dist(six)
+BuildSystem:	python
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(python)
+BuildRequires:  python%{pyver}dist(cffi)
+BuildRequires:  python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(pycparser)
+BuildRequires:  python%{pyver}dist(setuptools)
+BuildRequires:  python%{pyver}dist(wheel)
 
 %description
-PyNaCl is a Python binding to libsodium, which is a fork of the Networking
+%{oname} is a Python binding to libsodium, which is a fork of the Networking
 and Cryptography library.
 
 %prep
-%autosetup -n PyNaCl-%{version}
-
+%autosetup -n %{module}-%{version} -p1
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{module}.egg-info
+rm -rf src/libsodium
 
 %build
-export SODIUM_INSTALL=system
-%py3_build
+export SODIUM_INSTALL="system"
+%py_build
 
 %install
-# Must do the default python version install last because
-# the scripts in /usr/bin are overwritten with every setup.py install.
-%py3_install
+%py_install
 
-%files -n python-%{pypi_name}
-%license LICENSE
+%files
 %doc README.rst
-%{python3_sitearch}/nacl/
-%{python3_sitearch}/PyNaCl*.*-info
+%license LICENSE
+%{python_sitearch}/nacl/
+%{python_sitearch}/%{module}-%{version}.dist-info
