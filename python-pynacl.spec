@@ -2,7 +2,7 @@
 %define oname PyNaCl
 
 Name:		python-pynacl
-Version:	1.6.1
+Version:	1.6.2
 Release:	1
 Summary:	Python binding to the Networking and Cryptography (NaCl) library
 Group:		Development/Python
